@@ -1,8 +1,10 @@
 # Phototheque
 
 ## Install python packages
-
-`pip install -r requirements.txt`
+- `pip install virtualenv`
+- `virtualenv venv`
+- `source venv/bin/activate`
+- `pip install -r requirements.txt`
 
 ## Init db 
 - `FLASK_APP=app.py flask db init`
