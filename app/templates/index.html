@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="parallax-container">
+            <div class="parallax">
+                <img src="{{ url_for('static', filename='img/img1.jpg') }}"/>
+            </div>
+    </div>
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header">Upload your photos</h2>
+            <form action="/" method='post' enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                {{form.photo}}
+                {{ form.submit()}}
+            </form>
+        </div>
+    </div>
+    <div class="parallax-container">
+            <div class="parallax">
+                <img src="{{ url_for('static', filename='img/img2.jpg') }}"/>
+            </div>
+    </div>
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header">Photos collection</h2>
+            {% include 'slider.html' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function(){
+        $('.parallax').parallax();
+        $('.slider').slider();
+    });
+</script>
+{% endblock %}
+        

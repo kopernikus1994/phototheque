@@ -1,0 +1,43 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Slide show</title>
+        {% endif %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper red darken-1">
+              <a href="#" class="brand-logo">My slides show</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  {% if current_user.is_anonymous %}
+                  <li><a href="{{ url_for('login') }}">Login</a></li>
+                  <li><a href="{{ url_for('register') }}">Sign up</a></li>
+                  {% else %}
+                  <li><h5>Welcome {{ current_user.username}}</h5></li>
+                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                  {% endif %}
+              </ul>
+            </div>
+        </nav>
+    </div>
+        <!-- {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %} -->
+        {% block content %}{% endblock %}
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
+        {% block scripts %}{% endblock %}
+    </body>
+</html>
